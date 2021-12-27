@@ -16,10 +16,11 @@ def jogar():
     while (not enforcou and not acertou):  #enquanto (True) continua executando
         
         chute = input("Qual letra? ")
+        chute = chute.strip() #devolve uma string sem espaços
         
         index = 0
         for letra in palavra_secreta:
-            if(chute == letra):
+            if(chute.upper() == letra.upper()): #str.upper() deixa todas as letras maiúsculas
                 print("Encontrei a letra {} na posição {}".format(letra, index))
             index = index + 1
         
