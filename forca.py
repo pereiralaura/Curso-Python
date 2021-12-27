@@ -8,10 +8,11 @@ def jogar():
     print("**************************")
 
     #variáveis
-    palavra_secreta = "banana"
+    palavra_secreta = "banana".upper()
     letras_acertadas = ["_", "_", "_", "_", "_", "_"]
     enforcou = False
     acertou = False
+    erros = 0
     
     print(letras_acertadas)
     
@@ -19,14 +20,18 @@ def jogar():
     while (not enforcou and not acertou):  #enquanto (True) continua executando
         
         chute = input("Qual letra? ")
-        chute = chute.strip() #devolve uma string sem espaços
+        chute = chute.strip().upper() #devolve uma string sem espaços
         
-        index = 0 #posição
-        for letra in palavra_secreta:
-            if(chute.upper() == letra.upper()): #str.upper() deixa todas as letras maiúsculas
-                    letras_acertadas[index] = letra
-            index = index + 1
+        if(chute in palavra_secreta):
+            index = 0 #posição
+            for letra in palavra_secreta:
+                if(chute == letra): #str.upper() deixa todas as letras maiúsculas
+                        letras_acertadas[index] = letra
+                index += 1
+        else:
+            erros += 1 #incrementar no erro
         
+        enforcou = erros == 6
         print(letras_acertadas)
 
     #final do jogo
